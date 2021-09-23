@@ -93,8 +93,19 @@
             _instance.action.show = !_instance.action.autoHide;
         }
 
+        var _dynamicComponent = {
+            props: { content: String },
+            render: function (createElement) {
+                return createElement('div', [
+                    createElement(root.Vue.compile(this.content))]);
+            }
+        };
+
         var _botuiComponent = {
             template: 'BOTUI_TEMPLATE', // replaced by HTML template during build. see Gulpfile.js
+            components: {
+                'dynamic': _dynamicComponent
+            },
             data: function () {
                 return {
                     action: {
@@ -225,18 +236,9 @@
             }
         });
 
-        var _dynamicComponent = {
-            props: { content: String },
-            render: function (createElement) {
-                return createElement('div', [
-                    createElement(root.Vue.compile(this.content))]);
-            }
-        };
-
         _botApp = new root.Vue({
             components: {
-                'bot-ui': _botuiComponent,
-                'dynamic': _dynamicComponent,
+                'bot-ui': _botuiComponent
             }
         }).$mount('#' + id);
 
