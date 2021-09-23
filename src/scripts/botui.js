@@ -225,9 +225,17 @@
             }
         });
 
+        var _dynamicComponent = {
+            props: { content: String },
+            render: function (createElement) {
+                return createElement(Vue.compile(this.content));
+            }
+        };
+
         _botApp = new root.Vue({
             components: {
-                'bot-ui': _botuiComponent
+                'bot-ui': _botuiComponent,
+                'dynamic': _dynamicComponent,
             }
         }).$mount('#' + id);
 
