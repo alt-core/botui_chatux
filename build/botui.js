@@ -104,9 +104,11 @@
 
         var _dynamicComponent = {
             props: { content: String },
+            created: function () {
+                this.compiledTemplate = root.Vue.compile(this.content);
+            },
             render: function (createElement) {
-                return createElement('div', [
-                    createElement(root.Vue.compile(this.content))]);
+                return this.compiledTemplate.render(createElement);
             }
         };
 
