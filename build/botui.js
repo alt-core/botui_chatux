@@ -106,10 +106,9 @@
             props: { content: String },
             created: function () {
                 this.compiledTemplate = root.Vue.compile(this.content);
+                this.render = this.compiledTemplate.render;
+                this.staticRenderFns = this.compiledTemplate.staticRenderFns;
             },
-            render: function (createElement) {
-                return this.compiledTemplate.render(createElement);
-            }
         };
 
         var _botuiComponent = {
