@@ -228,7 +228,8 @@
         var _dynamicComponent = {
             props: { content: String },
             render: function (createElement) {
-                return createElement(Vue.compile(this.content));
+                return createElement('div', [
+                    createElement(root.Vue.compile(this.content))]);
             }
         };
 
