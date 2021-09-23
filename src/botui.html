@@ -35,7 +35,7 @@
                         <span v-if="msg.type == 'text'" v-text="msg.content" v-botui-markdown></span>
                         <span v-if="msg.type == 'html'" v-html="msg.content"></span>
                         <iframe v-if="msg.type == 'embed'" :src="msg.content" frameborder="0" allowfullscreen></iframe>
-                        <dynamic-template v-if="msg.type == 'dynamic'" :template-html="msg.content" />
+                        <extension-component v-if="msg.type == 'ext'" :content="msg.content" />
                     </div>
                 </div>
             </transition>

@@ -93,23 +93,11 @@
             _instance.action.show = !_instance.action.autoHide;
         }
 
-        var _dynamicTemplateComponent = {
-            props: {
-                templateHtml: {
-                    templateHtml: true,
-                    type: String
-                }
-            },
-            created () {
-                this.$options.template = this.templateHtml
-            }
-        };
+        var _subComponents = opts.extensionComponents || { 'extension-component': {} };
 
         var _botuiComponent = {
             template: 'BOTUI_TEMPLATE', // replaced by HTML template during build. see Gulpfile.js
-            components: {
-                'dynamic-template': _dynamicTemplateComponent
-            },
+            components: _subComponents,
             data: function () {
                 return {
                     action: {
