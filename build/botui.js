@@ -255,10 +255,10 @@
             _msg.type = _msg.type || 'text';
             _msg.visible = (_msg.delay || _msg.loading) ? false : true;
 
-            if (_msg.human && _interface.opt.humanPhoto) {
+            if (_msg.human && _interface.opt.humanPhoto && !('humanPhoto' in _msg)) {
                 _msg.humanPhoto = _interface.opt.humanPhoto;
             }
-            if (!_msg.human && _interface.opt.botPhoto) {
+            if (!_msg.human && _interface.opt.botPhoto && !('botPhoto' in _msg)) {
                 _msg.botPhoto = _interface.opt.botPhoto;
             }
 
