@@ -31,7 +31,7 @@
             <!-- switch transition-->
             <transition :name="msg.human? 'slide-fade-l2r':'slide-fade-r2l'">
                 <div v-if="msg.visible">
-                    <div :class="[{human: msg.human, 'botui-message-content': true}, msg.type]">
+                    <div :class="[{human: msg.human, 'botui-message-content': true}, msg.type].concat(msg.cssClass ? [msg.cssClass] : [])">
                         <span v-if="msg.type == 'plaintext'" v-text="msg.content"></span>
                         <span v-if="msg.type == 'text'" v-text="msg.content" v-botui-markdown></span>
                         <span v-if="msg.type == 'html'" v-html="msg.content"></span>
